@@ -12,52 +12,52 @@
             "originIndex": 0
         },
         {
-            "destinationIndex": 2,
-            "distanceMeters": 0,
-            "durationSeconds": 8,
-            "originIndex": 0
-        },
-        {
-            "destinationIndex": 2,
-            "distanceMeters": 0,
-            "durationSeconds": 93,
-            "originIndex": 1
-        },
-        {
-            "destinationIndex": 2,
-            "distanceMeters": 0,
-            "durationSeconds": 0,
-            "originIndex": 2
-        },
-        {
             "destinationIndex": 1,
-            "distanceMeters": 0,
-            "durationSeconds": 0,
-            "originIndex": 1
-        },
-        {
-            "destinationIndex": 0,
-            "distanceMeters": 0,
-            "durationSeconds": 99,
-            "originIndex": 1
-        },
-        {
-            "destinationIndex": 1,
-            "distanceMeters": 0,
+            "distanceMeters": 292,
             "durationSeconds": 87,
             "originIndex": 0
         },
         {
             "destinationIndex": 1,
             "distanceMeters": 0,
+            "durationSeconds": 0,
+            "originIndex": 1
+        },
+        {
+            "destinationIndex": 0,
+            "distanceMeters": 292,
+            "durationSeconds": 99,
+            "originIndex": 1
+        },
+        {
+            "destinationIndex": 2,
+            "distanceMeters": 0,
+            "durationSeconds": 0,
+            "originIndex": 2
+        },
+        {
+            "destinationIndex": 1,
+            "distanceMeters": 267,
             "durationSeconds": 80,
             "originIndex": 2
         },
         {
+            "destinationIndex": 2,
+            "distanceMeters": 25,
+            "durationSeconds": 8,
+            "originIndex": 0
+        },
+        {
             "destinationIndex": 0,
-            "distanceMeters": 0,
+            "distanceMeters": 25,
             "durationSeconds": 6,
             "originIndex": 2
+        },
+        {
+            "destinationIndex": 2,
+            "distanceMeters": 267,
+            "durationSeconds": 93,
+            "originIndex": 1
         }
     ]
 }

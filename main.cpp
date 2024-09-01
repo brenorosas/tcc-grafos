@@ -2,6 +2,8 @@
 #include <fstream>
 #include "structs/input.hpp"
 #include "nlohmann/json.hpp"
+#include "structs/cost.hpp"
+#include "utils/construct_adjacency_matrix.hpp"
 
 using json = nlohmann::json;
 using namespace std;
@@ -13,20 +15,14 @@ int main() {
 
     Input input = j.get<Input>();
 
-    cout << "Locations: ";
-    for (const auto& origin : input.locations) {
-        cout << origin << " ";
-    }
-    cout << endl;
+    vector<vector<Cost>> adjacency_matrix = construct_adjacency_matrix(input);
 
-    cout << "Routes: " << endl;
-    for (const auto& route : input.routes) {
-        cout << "Origin index: " << route.originIndex << endl;
-        cout << "Destination index: " << route.destinationIndex << endl;
-        cout << "Distance meters: " << route.distanceMeters << endl;
-        cout << "Duration seconds: " << route.durationSeconds << endl;
+    for (const auto& row : adjacency_matrix) {
+        for (const auto& cost : row) {
+            cout << cost.distanceMeters << " ";
+        }
         cout << endl;
     }
-
+    
     return 0;
 }

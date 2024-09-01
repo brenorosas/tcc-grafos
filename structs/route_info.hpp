@@ -19,9 +19,9 @@ void from_json(const json& j, RouteInfo& r) {
     j.at("destinationIndex").get_to(r.destinationIndex);
 
     if (j.contains("distanceMeters")) {
-        j.at("distanceMeters").get_to(r.durationSeconds);
+        j.at("distanceMeters").get_to(r.distanceMeters);
     } else {
-        r.durationSeconds = 0;
+        r.distanceMeters = 0;
     }
 
     if (j.contains("durationSeconds")) {
