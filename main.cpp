@@ -3,7 +3,8 @@
 #include "structs/input.hpp"
 #include "nlohmann/json.hpp"
 #include "structs/cost.hpp"
-#include "utils/construct_adjacency_matrix.hpp"
+#include "algorithms/construct_adjacency_matrix.hpp"
+#include "algorithms/make_random_route.hpp"
 
 using json = nlohmann::json;
 using namespace std;
@@ -23,6 +24,8 @@ int main() {
         }
         cout << endl;
     }
-    
+
+    vector<int> random_route = make_random_route(adjacency_matrix);
+
     return 0;
 }
