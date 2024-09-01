@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "nlohmann/json.hpp"
 #include "structs/input.hpp"
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 using namespace std;
@@ -13,15 +13,9 @@ int main() {
 
     Input input = j.get<Input>();
 
-    cout << "Origins: ";
-    for (const auto& origin : input.origins) {
+    cout << "Locations: ";
+    for (const auto& origin : input.locations) {
         cout << origin << " ";
-    }
-    cout << endl;
-
-    cout << "Destinations: ";
-    for (const auto& destination : input.destinations) {
-        cout << destination << " ";
     }
     cout << endl;
 

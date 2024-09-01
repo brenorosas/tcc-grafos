@@ -1,9 +1,7 @@
 {
-    "origins": [
+    "locations": [
         "endereço 1",
-        "endereço 2"
-    ],
-    "destinations": [
+        "endereço 2",
         "endereço 3"
     ],
     "routes": [
