@@ -5,6 +5,7 @@
 #include "structs/cost.hpp"
 #include "algorithms/construct_adjacency_matrix.hpp"
 #include "algorithms/make_random_route.hpp"
+#include "algorithms/calculate_total_cost.hpp"
 
 using json = nlohmann::json;
 using namespace std;
@@ -26,6 +27,15 @@ int main() {
     }
 
     vector<int> random_route = make_random_route(adjacency_matrix);
+    Cost random_route_total_cost = calculate_total_cost(adjacency_matrix, random_route);
+
+    cout << "Random route: ";
+    for (const auto& location : random_route) {
+        cout << location << " ";
+    }
+    cout << endl;
+
+    cout << "Random route total cost: " << random_route_total_cost.distanceMeters << " meters, " << random_route_total_cost.durationSeconds << " seconds" << endl;
 
     return 0;
 }
