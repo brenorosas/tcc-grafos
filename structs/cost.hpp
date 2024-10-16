@@ -12,4 +12,16 @@ struct Cost {
         distanceMeters += other.distanceMeters;
         durationSeconds += other.durationSeconds;
     }
+
+    bool operator<(const Cost& other) const {
+        return distanceMeters < other.distanceMeters;
+    }
+
+    bool operator>(const Cost& other) const {
+        return distanceMeters > other.distanceMeters;
+    }
+
+    bool operator==(const Cost& other) const {
+        return distanceMeters == other.distanceMeters && durationSeconds == other.durationSeconds;
+    }
 };

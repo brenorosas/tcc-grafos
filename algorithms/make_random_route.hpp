@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -16,7 +18,7 @@ vector<int> make_random_route(vector<vector<Cost>>& adjacency_matrix) {
         route[i] = i;
     }
 
-    shuffle(route.begin(), route.end(), g);
+    shuffle(route.begin() + 1, route.end(), g);
 
     route.push_back(route[0]);
     return route;

@@ -6,6 +6,7 @@
 #include "algorithms/construct_adjacency_matrix.hpp"
 #include "algorithms/make_random_route.hpp"
 #include "algorithms/calculate_total_cost.hpp"
+#include "algorithms/grasp.hpp"
 
 using json = nlohmann::json;
 using namespace std;
@@ -36,6 +37,17 @@ int main() {
     cout << endl;
 
     cout << "Random route total cost: " << random_route_total_cost.distanceMeters << " meters, " << random_route_total_cost.durationSeconds << " seconds" << endl;
+
+    vector<int> grasp_route = grasp(adjacency_matrix);
+    Cost grasp_route_total_cost = calculate_total_cost(adjacency_matrix, grasp_route);
+
+    cout << "GRASP route: ";
+    for (const auto& location : grasp_route) {
+        cout << location << " ";
+    }
+    cout << endl;
+
+    cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds" << endl;
 
     return 0;
 }

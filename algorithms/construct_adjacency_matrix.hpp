@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include "../structs/cost.hpp"
 #include "../structs/input.hpp"
