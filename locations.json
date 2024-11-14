@@ -1,20 +1,110 @@
 [
-    "Ladeira do Acupe, 39, Brotas", // minha casa
-    "Drogasil, Av. Dom João VI, 166 - Brotas, Salvador - BA, 40285-000", // drogasil brotas
-    "Av. Tancredo Neves, 148 - Caminho das Árvores, Salvador - BA, 41820-020", // Shopping iguatemi
-    "Av. Tancredo Neves, 3133 - Caminho das Árvores, Salvador - BA, 41820-021", // Shopping salvador
-    "Av. Milton Santos, s/nº - Ondina, Salvador - BA, 40170-110", // Ufba ondina.
-    "Pr. Gago Coutinho, S/N - São Cristóvão, Salvador - BA, 41510-045", // Aeroporto
-    "Av. Lafayete Coutinho, s/n - Comercio, Salvador - BA, 40301-155", // MAM
-    "Praia do Porto da BarraSalvador - BA", // Porto da barra
-    "R. Artêmio Castro Valente, 1 - Canabrava, Salvador - BA, 41260-300", // Barradão
-    "Av. Sete de Setembro, 2195 - Vitória, Salvador - BA, 40080-001", // Saladearte Cinema do Museu
-    "Ladeira da Fonte das Pedras, s/n - Nazaré, Salvador - BA, 40050-565", // Fonte nova.
-    "Av. Octávio Mangabeira, 153 - Amaralina, Salvador - BA, 41900-381", // Paraíso da carne do sol
-    "Av. Paulo VI, 1535 - Pituba, Salvador - BA, 41810-000", // Joks, jogos e drinks
-    "R. Teixeira Barros, 31 - Candeal, Salvador - BA, 40279-090", // Cemitério Municipal de Brotas
-    "Av. Antônio Carlos Magalhães, s/n - Itaigara, Salvador - BA, 41815-420", // Parque da cidade
-    "Praça Conselheiro Almeida Couto, 500 - Nazaré, Salvador - BA, 40050-410", // Hospital santa izabel
-    "R. da Boa Viagem, 56 - Monte Serrat, Salvador - BA, 40301-155", // Ponta do humaitá
-    "Largo do Bonfim, s/n - Bonfim, Salvador - BA, 40415-475" // Igreja do bonfim
+    {
+        "address": "Ladeira do Acupe, 39, Brotas",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 1000,
+        "description": "minha casa"
+    },
+    {
+        "address": "Drogasil, Av. Dom João VI, 166 - Brotas, Salvador - BA, 40285-000",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 2000,
+        "description": "drogasil brotas"
+    },
+    {
+        "address": "Av. Tancredo Neves, 148 - Caminho das Árvores, Salvador - BA, 41820-020",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 2500,
+        "description": "Shopping iguatemi"
+    },
+    {
+        "address": "Av. Tancredo Neves, 3133 - Caminho das Árvores, Salvador - BA, 41820-021",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 500,
+        "description": "Shopping salvador"
+    },
+    {
+        "address": "Av. Milton Santos, s/nº - Ondina, Salvador - BA, 40170-110",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 3000,
+        "description": "Ufba ondina."
+    },
+    {
+        "address": "Pr. Gago Coutinho, S/N - São Cristóvão, Salvador - BA, 41510-045",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 4000,
+        "description": "Aeroporto"
+    },
+    {
+        "address": "Av. Lafayete Coutinho, s/n - Comercio, Salvador - BA, 40301-155",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 1200,
+        "description": "MAM"
+    },
+    {
+        "address": "Praia do Porto da BarraSalvador - BA",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 4500,
+        "description": "Porto da barra"
+    },
+    {
+        "address": "R. Artêmio Castro Valente, 1 - Canabrava, Salvador - BA, 41260-300",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 2200,
+        "description": "Barradão"
+    },
+    {
+        "address": "Av. Sete de Setembro, 2195 - Vitória, Salvador - BA, 40080-001",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 3700,
+        "description": "Saladearte Cinema do Museu"
+    },
+    {
+        "address": "Ladeira da Fonte das Pedras, s/n - Nazaré, Salvador - BA, 40050-565",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 10000,
+        "description": "Fonte nova."
+    },
+    {
+        "address": "Av. Octávio Mangabeira, 153 - Amaralina, Salvador - BA, 41900-381",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 9000,
+        "description": "Paraíso da carne do sol"
+    },
+    {
+        "address": "Av. Paulo VI, 1535 - Pituba, Salvador - BA, 41810-000",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 2400,
+        "description": "Joks, jogos e drinks"
+    },
+    {
+        "address": "R. Teixeira Barros, 31 - Candeal, Salvador - BA, 40279-090",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 5400,
+        "description": "Cemitério Municipal de Brotas"
+    },
+    {
+        "address": "Av. Antônio Carlos Magalhães, s/n - Itaigara, Salvador - BA, 41815-420",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 8900,
+        "description": "Parque da cidade"
+    },
+    {
+        "address": "Praça Conselheiro Almeida Couto, 500 - Nazaré, Salvador - BA, 40050-410",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 4700,
+        "description": "Hospital santa izabel"
+    },
+    {
+        "address": "R. da Boa Viagem, 56 - Monte Serrat, Salvador - BA, 40301-155",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 8300,
+        "description": "Ponta do humaitá"
+    },
+    {
+        "address": "Largo do Bonfim, s/n - Bonfim, Salvador - BA, 40415-475",
+        "collectionTimeInSeconds": 10,
+        "dendeInMililiters": 300,
+        "description": "Igreja do bonfim"
+    }
 ]

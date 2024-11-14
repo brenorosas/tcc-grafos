@@ -26,7 +26,7 @@ void local_search(vector<vector<Cost>>& adjacency_matrix, vector<int>& route) {
             }
             swap(best_route_at_moment[i], best_route_at_moment[i + 1]);
         }
-        
+
         if (!improved) {
             break;
         }
@@ -37,17 +37,24 @@ void local_search(vector<vector<Cost>>& adjacency_matrix, vector<int>& route) {
 }
 
 
-vector<int> grasp(vector<vector<Cost>>& adjacency_matrix) {
+vector<int> grasp(vector<vector<Cost>>& adjacency_matrix, Limitations limits) {
     int max_iterations = 100000;
 
-    vector<int> best_route = make_random_route(adjacency_matrix);
-    Cost best_cost = calculate_total_cost(adjacency_matrix, best_route);
+    vector<int> best_route = make_random_route(adjacency_matrix, 0, limits);
+    Cost best_cost = {numeric_limits<int>::max(), numeric_limits<int>::max(), numeric_limits<int>::max()};
 
     for (int i = 0; i < max_iterations; i++) {
-        vector<int> route = make_random_route(adjacency_matrix);
+        vector<int> route = make_random_route(adjacency_matrix, 0.5, limits);
         local_search(adjacency_matrix, route);
+
         Cost cost = calculate_total_cost(adjacency_matrix, route);
-        if (cost < best_cost) {
+
+        // Verifica se o custo está dentro dos limites
+        if (cost.dendeInMililiters <= limits.maxDendeInMililiters &&
+            cost.dendeInMililiters >= limits.minDendeInMililiters &&
+            cost.durationSeconds <= limits.maxCollectionTimeInSeconds &&
+            cost < best_cost) {
+
             best_cost = cost;
             best_route = route;
         }

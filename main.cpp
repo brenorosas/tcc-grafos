@@ -20,14 +20,14 @@ int main() {
 
     vector<vector<Cost>> adjacency_matrix = construct_adjacency_matrix(input);
 
-    for (const auto& row : adjacency_matrix) {
-        for (const auto& cost : row) {
-            cout << cost.distanceMeters << " ";
-        }
-        cout << endl;
-    }
+    // for (const auto& row : adjacency_matrix) {
+    //     for (const auto& cost : row) {
+    //         cout << cost.distanceMeters << " ";
+    //     }
+    //     cout << endl;
+    // }
 
-    vector<int> random_route = make_random_route(adjacency_matrix);
+    vector<int> random_route = make_random_route(adjacency_matrix, 1, input.limitations);
     Cost random_route_total_cost = calculate_total_cost(adjacency_matrix, random_route);
 
     cout << "Random route: ";
@@ -36,9 +36,9 @@ int main() {
     }
     cout << endl;
 
-    cout << "Random route total cost: " << random_route_total_cost.distanceMeters << " meters, " << random_route_total_cost.durationSeconds << " seconds" << endl;
+    cout << "Random route total cost: " << random_route_total_cost.distanceMeters << " meters, " << random_route_total_cost.durationSeconds << " seconds, " << random_route_total_cost.dendeInMililiters << " mililiters" << endl;
 
-    vector<int> grasp_route = grasp(adjacency_matrix);
+    vector<int> grasp_route = grasp(adjacency_matrix, input.limitations);
     Cost grasp_route_total_cost = calculate_total_cost(adjacency_matrix, grasp_route);
 
     cout << "GRASP route: ";
@@ -47,7 +47,7 @@ int main() {
     }
     cout << endl;
 
-    cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds" << endl;
+    cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds, " << grasp_route_total_cost.dendeInMililiters << " mililiters" << endl;
 
     return 0;
 }

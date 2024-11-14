@@ -18,12 +18,15 @@ int main() {
     json j;
     file >> j;
 
-    vector<string> locations = j.get<vector<string>>();
+    vector<Location> locations = j.get<vector<Location>>();
+    ofstream format_locations_file("locations.json");
+    format_locations_file << json(locations).dump(4) << endl;
+
     RouteMatrixRequest request;
 
     for (const auto& location : locations) {
-        request.add_origin(location);
-        request.add_destination(location);
+        request.add_origin(location.address);
+        request.add_destination(location.address);
     }
 
     string api_key = env_vars["GOOGLE_API_KEY"];
@@ -41,9 +44,16 @@ int main() {
 
     vector<RouteInfo> routes = response_json.get<vector<RouteInfo>>();
 
+    Limitations limitations;
+    ifstream limitations_file("limitations.json");
+    json limitations_json;
+    limitations_file >> limitations_json;
+    limitations = limitations_json.get<Limitations>();
+
     Input input;
     input.locations = locations;
     input.routes = routes;
+    input.limitations = limitations;
 
     ofstream output_file("input.json");
     output_file << json(input).dump(4) << endl;
