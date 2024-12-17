@@ -1,8 +1,8 @@
 [
     {
         "address": "Ladeira do Acupe, 39, Brotas",
-        "collectionTimeInSeconds": 10,
-        "dendeInMililiters": 1000,
+        "collectionTimeInSeconds": 0,
+        "dendeInMililiters": 0,
         "description": "minha casa"
     },
     {

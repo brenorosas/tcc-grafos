@@ -1,5 +1,5 @@
 {
-    "maxDendeInMililiters": 200000,
-    "maxCollectionTimeInSeconds": 28800,
+    "maxDendeInMililiters": 500000,
+    "maxCollectionTimeInSeconds": 360000,
     "minDendeInMililiters": 0
 }

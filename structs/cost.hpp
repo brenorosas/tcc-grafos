@@ -42,11 +42,15 @@ struct Cost {
 
     // Collected dendeInMililiters per distanceMeters
     // bool operator<(const Cost& other) const {
-    //     return dende_per_distance() > other.dende_per_distance();
+    //     return distance_per_dende() < other.distance_per_dende();
     // }
 
-    double dende_per_distance() const {
-        return static_cast<double>(dendeInMililiters) / distanceMeters;
+    double distance_per_dende() const {
+        return static_cast<double>(distanceMeters) / dendeInMililiters;
+    }
+
+    double fitness() const {
+        return 0.6 * -distanceMeters + 0.3 * -durationSeconds + 0.1 * dendeInMililiters;
     }
 
     bool is_inside_limits(Limitations limits) const {

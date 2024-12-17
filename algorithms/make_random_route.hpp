@@ -34,6 +34,7 @@ vector<int> make_random_route(vector<vector<Cost>>& adjacency_matrix, float epsi
                 if (!visited[j]) {
                     Cost new_cost = current_cost;
                     new_cost += adjacency_matrix[last_node][j];
+                    new_cost += adjacency_matrix[j][0];
                     if (new_cost.dendeInMililiters <= limits.maxDendeInMililiters &&
                         new_cost.durationSeconds <= limits.maxCollectionTimeInSeconds) {
                         candidates.push_back(j);
@@ -50,6 +51,7 @@ vector<int> make_random_route(vector<vector<Cost>>& adjacency_matrix, float epsi
                 if (!visited[j]) {
                     Cost new_cost = current_cost;
                     new_cost += adjacency_matrix[last_node][j];
+                    new_cost += adjacency_matrix[j][0];
                     if (new_cost.dendeInMililiters <= limits.maxDendeInMililiters &&
                         new_cost.durationSeconds <= limits.maxCollectionTimeInSeconds &&
                         adjacency_matrix[last_node][j] < min_cost) {

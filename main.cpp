@@ -7,6 +7,7 @@
 #include "algorithms/make_random_route.hpp"
 #include "algorithms/calculate_total_cost.hpp"
 #include "algorithms/grasp.hpp"
+#include "algorithms/genetic.hpp"
 
 using json = nlohmann::json;
 using namespace std;
@@ -19,13 +20,6 @@ int main() {
     Input input = j.get<Input>();
 
     vector<vector<Cost>> adjacency_matrix = construct_adjacency_matrix(input);
-
-    // for (const auto& row : adjacency_matrix) {
-    //     for (const auto& cost : row) {
-    //         cout << cost.distanceMeters << " ";
-    //     }
-    //     cout << endl;
-    // }
 
     vector<int> random_route = make_random_route(adjacency_matrix, 1, input.limitations);
     Cost random_route_total_cost = calculate_total_cost(adjacency_matrix, random_route);
@@ -48,6 +42,30 @@ int main() {
     cout << endl;
 
     cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds, " << grasp_route_total_cost.dendeInMililiters << " mililiters" << endl;
+
+    vector<int> genetic_route = genetic_algorithm(adjacency_matrix, input.limitations);
+    Cost genetic_route_total_cost = calculate_total_cost(adjacency_matrix, genetic_route);
+
+    cout << "Genetic route: ";
+    for (const auto& location : genetic_route) {
+        cout << location << " ";
+    }
+    cout << endl;
+
+    cout << "Genetic route total cost: " << genetic_route_total_cost.distanceMeters << " meters, " << genetic_route_total_cost.durationSeconds << " seconds, " << genetic_route_total_cost.dendeInMililiters << " mililiters" << endl;
+
+     vector<int> memetic_route = genetic_algorithm(adjacency_matrix, input.limitations, true);
+    Cost memetic_route_total_cost = calculate_total_cost(adjacency_matrix, memetic_route);
+
+    cout << "Memetic route: ";
+    for (const auto& location : memetic_route) {
+        cout << location << " ";
+    }
+    cout << endl;
+
+    cout << "Memetic route total cost: " << memetic_route_total_cost.distanceMeters << " meters, " << memetic_route_total_cost.durationSeconds << " seconds, " << memetic_route_total_cost.dendeInMililiters << " mililiters" << endl;
+
+
 
     return 0;
 }
