@@ -72,7 +72,7 @@ void mutation(vector<int>& route) {
     swap(route[k], route[g() % n]);
 }
 
-vector<int> genetic_algorithm(vector<vector<Cost>>& adjacency_matrix, Limitations& limits, bool is_memetic = false, double epsilon = 0.5, int population_size = 100, int generations = 1000) {
+vector<int> genetic_algorithm(vector<vector<Cost>>& adjacency_matrix, Limitations& limits, bool is_memetic = false, double epsilon = 0.5, int population_size = 100, int generations = 1000, int best_cota = 10, int selection_size = 50) {
     random_device rd;
     mt19937 g(rd());
 
@@ -95,12 +95,12 @@ vector<int> genetic_algorithm(vector<vector<Cost>>& adjacency_matrix, Limitation
 
         // 10 best individuals
         vector<vector<int>> new_population;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < best_cota; i++) {
             new_population.push_back(evaluated_population[i].second);
         }
 
         // 15 random individuals, not in the best 10
-        while (new_population.size() < population_size / 2) {
+        while (new_population.size() < selection_size) {
             int random_idx = g() % evaluated_population.size();
             if (find(new_population.begin(), new_population.end(), evaluated_population[random_idx].second) == new_population.end()) {
                 new_population.push_back(evaluated_population[random_idx].second);
@@ -108,8 +108,8 @@ vector<int> genetic_algorithm(vector<vector<Cost>>& adjacency_matrix, Limitation
         }
 
         while (new_population.size() < population_size) {
-            int parent1_idx = g() % (population_size / 2);
-            int parent2_idx = g() % (population_size / 2);
+            int parent1_idx = g() % selection_size;
+            int parent2_idx = g() % selection_size;
             vector<int> child = crossover(new_population[parent1_idx], new_population[parent2_idx]);
             mutation(child);
             if (is_memetic)
