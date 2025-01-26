@@ -12,20 +12,56 @@
 using json = nlohmann::json;
 using namespace std;
 
-int main() {
-    double epsilon;
-    int max_iterations;
 
-    cin >> epsilon >> max_iterations;
-    ifstream file("input.json");
-    json j;
-    file >> j;
+int main(int argc, char* argv[]) {
+   double epsilon = 0.0;
+    int max_iterations = 10000;
 
-    Input input = j.get<Input>();
+    // Ler parâmetros da linha de comando
+    for (int i = 1; i < argc; ++i) {
+        string arg = argv[i];
+        if (arg.find("--epsilon") == 0) {
+            epsilon = stof(argv[i + 1]);
+        }
+    }
+    
+    // ifstream file("input.json");
+    // json j;
+    // file >> j;
+
+    // Input input = j.get<Input>();
+    int n;
+    cin >> n;
+    Input input;
+    for (int i = 0; i < n; i++) {
+        Location location;
+        cin >> location.collectionTimeInSeconds >> location.dendeInMililiters;
+        input.locations.push_back(location);
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            RouteInfo route_info;
+            cin >> route_info.originIndex >> route_info.destinationIndex >> route_info.distanceMeters >> route_info.durationSeconds;
+            input.routes.push_back(route_info);
+        }
+    }
+
+    input.limitations.maxCollectionTimeInSeconds = 3600 * 8;
+    input.limitations.maxDendeInMililiters = 100 * 1000;
+    input.limitations.minDendeInMililiters = 20 * 1000;
+
+    // ifstream file("input.json");
+    // json j;
+    // file >> j;
+
+    // Input input = j.get<Input>();
 
     vector<vector<Cost>> adjacency_matrix = construct_adjacency_matrix(input);
-
+    auto start_time = chrono::steady_clock::now();
     vector<int> grasp_route = grasp(adjacency_matrix, input.limitations, epsilon, max_iterations);
+    auto current_time = chrono::steady_clock::now();
+    auto elapsed_milliseconds = chrono::duration_cast<chrono::milliseconds>(current_time - start_time).count();
     Cost grasp_route_total_cost = calculate_total_cost(adjacency_matrix, grasp_route);
 
     // cout << "GRASP route: ";
@@ -36,6 +72,6 @@ int main() {
 
     // cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds, " << grasp_route_total_cost.dendeInMililiters << " mililiters" << endl;
 
-    cout << grasp_route_total_cost.fitness() << endl;
+    cout << grasp_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << grasp_route_total_cost.distanceMeters << " " << grasp_route_total_cost.durationSeconds << " " << grasp_route_total_cost.dendeInMililiters << endl;
     return 0;
 }

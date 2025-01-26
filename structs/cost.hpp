@@ -50,7 +50,7 @@ struct Cost {
     }
 
     double fitness() const {
-        return 0.6 / distanceMeters + 0.3 / durationSeconds + 0.1 * dendeInMililiters;
+        return -0.6 * distanceMeters + -0.3 * durationSeconds + 0.1 * dendeInMililiters;
     }
 
     bool is_inside_limits(Limitations limits) const {

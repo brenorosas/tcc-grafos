@@ -107,16 +107,39 @@ vector<int> genetic_algorithm(vector<vector<Cost>>& adjacency_matrix, Limitation
             }
         }
 
+        auto start_time = chrono::steady_clock::now();
+
         while (new_population.size() < population_size) {
+            auto current_time = chrono::steady_clock::now();
+            auto elapsed_milliseconds = chrono::duration_cast<chrono::milliseconds>(current_time - start_time).count();
+            int time_limit_milliseconds = 100;
+            if (elapsed_milliseconds >= time_limit_milliseconds) {
+                break;
+            }
             int parent1_idx = g() % selection_size;
             int parent2_idx = g() % selection_size;
             vector<int> child = crossover(new_population[parent1_idx], new_population[parent2_idx]);
+
             mutation(child);
+            Cost cost_before = calculate_total_cost(adjacency_matrix, child);
+
+            if (!cost_before.is_inside_limits(limits)) {
+                continue;
+            }
+
             if (is_memetic)
                 local_search(adjacency_matrix, child, limits);
             Cost cost = calculate_total_cost(adjacency_matrix, child);
+
             if (cost.is_inside_limits(limits))
                 new_population.push_back(child);
+        }
+
+        while (new_population.size() < population_size) {
+            vector<int> route = make_random_route(adjacency_matrix, epsilon, limits);
+            Cost cost = calculate_total_cost(adjacency_matrix, route);
+            if (cost.is_inside_limits(limits))
+                new_population.push_back(route);
         }
 
         population = new_population;
