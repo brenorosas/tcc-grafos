@@ -12,24 +12,10 @@
 using json = nlohmann::json;
 using namespace std;
 
-int main(int argc, char* argv[]) {
-   double epsilon = 0.0;
-    int population_size = 100, generations = 1000, best_cota = 0, selection_size = 0;
+int main() {
+    double epsilon = 0.9817;
+    int population_size = 100, generations = 1000, best_cota = 27, selection_size = 10;
 
-    // Ler parâmetros da linha de comando
-    for (int i = 1; i < argc; ++i) {
-        string arg = argv[i];
-        if (arg.find("--epsilon") == 0) {
-            epsilon = stof(argv[i + 1]);
-        } else if (arg.find("--best-cota") == 0) {
-            best_cota = stoi(argv[i + 1]);
-        } else if (arg.find("--selection") == 0) {
-            selection_size = stoi(argv[i + 1]);
-        }
-    }
-    
-    best_cota = min(best_cota, population_size);
-    selection_size = min(selection_size, population_size);
     // ifstream file("input.json");
     // json j;
     // file >> j;

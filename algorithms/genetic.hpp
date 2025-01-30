@@ -113,9 +113,9 @@ vector<int> genetic_algorithm(vector<vector<Cost>>& adjacency_matrix, Limitation
             auto current_time = chrono::steady_clock::now();
             auto elapsed_milliseconds = chrono::duration_cast<chrono::milliseconds>(current_time - start_time).count();
             int time_limit_milliseconds = 100;
-            if (elapsed_milliseconds >= time_limit_milliseconds) {
-                break;
-            }
+            // if (elapsed_milliseconds >= time_limit_milliseconds) {
+            //     break;
+            // }
             int parent1_idx = g() % selection_size;
             int parent2_idx = g() % selection_size;
             vector<int> child = crossover(new_population[parent1_idx], new_population[parent2_idx]);
