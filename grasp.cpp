@@ -14,8 +14,8 @@ using namespace std;
 
 
 int main() {
-    double epsilon = 0.952;
-    int max_iterations = 10000;
+    double epsilon = 1.0;
+    int max_iterations = 1;
 
     
     // ifstream file("input.json");
