@@ -1,0 +1,12 @@
+---
+weight: 1
+limits:
+  source: 512
+  time: 1500
+  memory: 256
+  timeMultiplier: 1
+datasets:
+- percentage: 1
+  path: main
+  name: main
+statement: statement.pdf
