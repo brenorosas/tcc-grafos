@@ -68,5 +68,6 @@ int main(int argc, char* argv[]) {
     // cout << "memetic route total cost: " << memetic_route_total_cost.distanceMeters << " meters, " << genetic_route_total_cost.durationSeconds << " seconds, " << genetic_route_total_cost.dendeInMililiters << " mililiters" << endl;
 
     cout << memetic_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << memetic_route_total_cost.distanceMeters << " " << memetic_route_total_cost.durationSeconds << " " << memetic_route_total_cost.dendeInMililiters << endl;
+
     return 0;
 }

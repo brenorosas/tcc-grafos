@@ -58,6 +58,7 @@ int main() {
     // cout << endl;
 
     // cout << "Genetic route total cost: " << genetic_route_total_cost.distanceMeters << " meters, " << genetic_route_total_cost.durationSeconds << " seconds, " << genetic_route_total_cost.dendeInMililiters << " mililiters" << endl;
-    cout << genetic_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << genetic_route_total_cost.distanceMeters << " " << genetic_route_total_cost.durationSeconds << " " << genetic_route_total_cost.dendeInMililiters << endl;
+    // cout << genetic_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << genetic_route_total_cost.distanceMeters << " " << genetic_route_total_cost.durationSeconds << " " << genetic_route_total_cost.dendeInMililiters << endl;
+    cout << genetic_route_total_cost.fitness() << endl;
     return 0;
 }

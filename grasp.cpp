@@ -65,6 +65,7 @@ int main() {
 
     // cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds, " << grasp_route_total_cost.dendeInMililiters << " mililiters" << endl;
 
-    cout << grasp_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << grasp_route_total_cost.distanceMeters << " " << grasp_route_total_cost.durationSeconds << " " << grasp_route_total_cost.dendeInMililiters << endl;
+    // cout << grasp_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << grasp_route_total_cost.distanceMeters << " " << grasp_route_total_cost.durationSeconds << " " << grasp_route_total_cost.dendeInMililiters << endl;
+    cout << grasp_route_total_cost.fitness() << endl;
     return 0;
 }

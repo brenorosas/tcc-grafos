@@ -7,11 +7,11 @@
 ## value on the command line).
 
 ## Directory where the programs will be run.
-# execDir = "./"
+execDir = "."
 
 ## File that contains the description of the parameters of the target
 ## algorithm.
-# parameterFile = "./parameters.txt"
+parameterFile = "parameters.txt"
 
 ## File that contains a table of initial configurations. If empty or `NULL`,
 ## all initial configurations are randomly generated.
@@ -19,35 +19,35 @@
 
 ## File to save tuning results as an R dataset, either absolute path or
 ## relative to execDir.
-# logFile = "./irace.Rdata"
+logFile = "irace.Rdata"
 
 ## Directory where training instances are located; either absolute path or
 ## relative to current directory. If no `trainInstancesFiles` is provided, all
 ## the files in `trainInstancesDir` will be listed as instances.
-trainInstancesDir = "./Instances"
+trainInstancesDir = "instances"
 
 ## File that contains a list of training instances and optionally additional
 ## parameters for them. If `trainInstancesDir` is provided, `irace` will
 ## search for the files in this folder.
-# trainInstancesFile = ""
+trainInstancesFile = "instances.txt"
 
 ## Randomly sample the training instances or use them in the order given.
 # sampleInstances = 1
 
 ## Directory where testing instances are located, either absolute or relative
 ## to current directory.
-# testInstancesDir = ""
+testInstancesDir = "instances"
 
 ## File containing a list of test instances and optionally additional
 ## parameters for them.
-# testInstancesFile = ""
+testInstancesFile = "instances.txt"
 
 ## Number of elite configurations returned by irace that will be tested if
 ## test instances are provided.
-# testNbElites = 1
+testNumElites = 1
 
 ## Enable/disable testing the elite configurations found at each iteration.
-# testIterationElites = 0
+testIterations = 1
 
 ## Statistical test used for elimination. The default value selects `t-test`
 ## if `capping` is enabled or `F-test`, otherwise. Valid values are: F-test
@@ -112,12 +112,11 @@ targetRunner = "./target-runner.bat"
 
 ## If the target algorithm is deterministic, configurations will be evaluated
 ## only once per instance.
-# deterministic = 0
+deterministic = 0
 
 ## Maximum number of runs (invocations of `targetRunner`) that will be
 ## performed. It determines the maximum budget of experiments for the tuning.
-# maxExperiments = 0
-maxExperiments = 180
+maxExperiments = 1000
 
 ## Minimum number of runs (invocations of `targetRunner`) that will be
 ## performed. It determines the minimum budget of experiments for the tuning.
@@ -139,17 +138,17 @@ maxExperiments = 180
 
 ## Number of calls to `targetRunner` to execute in parallel. Values `0` or `1`
 ## mean no parallelization.
-# parallel = 0
+parallel = 1
 
 ## Enable/disable load-balancing when executing experiments in parallel.
 ## Load-balancing makes better use of computing resources, but increases
 ## communication overhead. If this overhead is large, disabling load-balancing
 ## may be faster.
-# loadBalancing = 1
+loadBalancing = 1
 
 ## Enable/disable MPI. Use `Rmpi` to execute `targetRunner` in parallel
 ## (parameter `parallel` is the number of slaves).
-# mpi = 0
+mpi = 0
 
 ## Specify how irace waits for jobs to finish when `targetRunner` submits jobs
 ## to a batch cluster: sge, pbs, torque, slurm or htcondor. `targetRunner`
@@ -161,10 +160,10 @@ maxExperiments = 180
 
 ## Debug level of the output of `irace`. Set this to 0 to silence all debug
 ## messages. Higher values provide more verbose debug messages.
-# debugLevel = 0
+debugLevel = 0
 
 ## Seed of the random number generator (by default, generate a random seed).
-# seed = NA
+seed = 42
 
 ## Enable/disable the soft restart strategy that avoids premature convergence
 ## of the probabilistic model.

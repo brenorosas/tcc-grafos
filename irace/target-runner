@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get the instance file from the command line arguments
+INSTANCE=$1
+SEED=$2
+shift 2
+
+# Get the parameters from the command line arguments
+EPSILON=$1
+BEST_COTA=$2
+SELECTION_SIZE=$3
+
+# Run the memetic algorithm with the given parameters
+./memetic_irace $EPSILON $BEST_COTA $SELECTION_SIZE < $INSTANCE 
