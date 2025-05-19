@@ -14,8 +14,8 @@ using namespace std;
 
 
 int main() {
-    double epsilon = 1.0;
-    int max_iterations = 1;
+    double epsilon = 0.9722;
+    int max_iterations = 10000;
 
     
     // ifstream file("input.json");
@@ -28,7 +28,7 @@ int main() {
     Input input;
     for (int i = 0; i < n; i++) {
         Location location;
-        cin >> location.collectionTimeInSeconds >> location.dendeInMililiters;
+        cin >> location.collectionTimeInSeconds >> location.dendeInDeciliters;
         input.locations.push_back(location);
     }
 
@@ -41,8 +41,8 @@ int main() {
     }
 
     input.limitations.maxCollectionTimeInSeconds = 3600 * 8;
-    input.limitations.maxDendeInMililiters = 100 * 1000;
-    input.limitations.minDendeInMililiters = 20 * 1000;
+    input.limitations.maxDendeInDeciliters = 100 * 10;
+    input.limitations.minDendeInDeciliters = 20 * 10;
 
     // ifstream file("input.json");
     // json j;
@@ -63,9 +63,9 @@ int main() {
     // }
     // cout << endl;
 
-    // cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds, " << grasp_route_total_cost.dendeInMililiters << " mililiters" << endl;
+    // cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds, " << grasp_route_total_cost.dendeInDeciliters << " mililiters" << endl;
 
-    // cout << grasp_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << grasp_route_total_cost.distanceMeters << " " << grasp_route_total_cost.durationSeconds << " " << grasp_route_total_cost.dendeInMililiters << endl;
-    cout << grasp_route_total_cost.fitness() << endl;
+    cout << grasp_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << grasp_route_total_cost.distanceMeters << " " << grasp_route_total_cost.durationSeconds << " " << grasp_route_total_cost.dendeInDeciliters << endl;
+    // cout << grasp_route_total_cost.fitness() << endl;
     return 0;
 }

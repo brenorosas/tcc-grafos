@@ -5,8 +5,8 @@
 ::##############################################################################
 
 :: Set the base directory for executables
-SET "base_dir=%~dp0.."
-SET "exe=%base_dir%\grasp.exe"
+SET "base_dir=%~dp0"
+SET "exe=%base_dir%grasp_irace"
 SET "fixed_params= "
 
 FOR /f "tokens=1-4*" %%a IN ("%*") DO (

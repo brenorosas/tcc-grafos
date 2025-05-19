@@ -13,8 +13,8 @@ using json = nlohmann::json;
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    double epsilon = 0.9858;
-    int population_size = 100, generations = 1000, best_cota = 27, selection_size = 24;
+    double epsilon = 0.5214;
+    int population_size = 100, generations = 1000, best_cota = 30, selection_size = 54;
 
     
     best_cota = min(best_cota, population_size);
@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
     Input input;
     for (int i = 0; i < n; i++) {
         Location location;
-        cin >> location.collectionTimeInSeconds >> location.dendeInMililiters;
+        cin >> location.collectionTimeInSeconds >> location.dendeInDeciliters;
         input.locations.push_back(location);
     }
 
@@ -42,8 +42,8 @@ int main(int argc, char* argv[]) {
     }
 
     input.limitations.maxCollectionTimeInSeconds = 3600 * 8;
-    input.limitations.maxDendeInMililiters = 100 * 1000;
-    input.limitations.minDendeInMililiters = 20 * 1000;
+    input.limitations.maxDendeInDeciliters = 100 * 10;
+    input.limitations.minDendeInDeciliters = 20 * 10;
 
     // ifstream file("input.json");
     // json j;
@@ -65,9 +65,9 @@ int main(int argc, char* argv[]) {
     // }
     // cout << endl;
 
-    // cout << "memetic route total cost: " << memetic_route_total_cost.distanceMeters << " meters, " << genetic_route_total_cost.durationSeconds << " seconds, " << genetic_route_total_cost.dendeInMililiters << " mililiters" << endl;
+    // cout << "memetic route total cost: " << memetic_route_total_cost.distanceMeters << " meters, " << genetic_route_total_cost.durationSeconds << " seconds, " << genetic_route_total_cost.dendeInDeciliters << " mililiters" << endl;
 
-    cout << memetic_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << memetic_route_total_cost.distanceMeters << " " << memetic_route_total_cost.durationSeconds << " " << memetic_route_total_cost.dendeInMililiters << endl;
+    cout << memetic_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << memetic_route_total_cost.distanceMeters << " " << memetic_route_total_cost.durationSeconds << " " << memetic_route_total_cost.dendeInDeciliters << endl;
 
     return 0;
 }

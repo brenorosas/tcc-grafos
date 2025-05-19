@@ -13,8 +13,8 @@ using json = nlohmann::json;
 using namespace std;
 
 int main() {
-    double epsilon = 0.9817;
-    int population_size = 100, generations = 1000, best_cota = 27, selection_size = 10;
+    double epsilon = 0.6491;
+    int population_size = 100, generations = 1000, best_cota = 29, selection_size = 27;
 
     // ifstream file("input.json");
     // json j;
@@ -26,7 +26,7 @@ int main() {
     Input input;
     for (int i = 0; i < n; i++) {
         Location location;
-        cin >> location.collectionTimeInSeconds >> location.dendeInMililiters;
+        cin >> location.collectionTimeInSeconds >> location.dendeInDeciliters;
         input.locations.push_back(location);
     }
 
@@ -39,8 +39,8 @@ int main() {
     }
 
     input.limitations.maxCollectionTimeInSeconds = 3600 * 8;
-    input.limitations.maxDendeInMililiters = 100 * 1000;
-    input.limitations.minDendeInMililiters = 20 * 1000;
+    input.limitations.maxDendeInDeciliters = 100 * 10;
+    input.limitations.minDendeInDeciliters = 20 * 10;
 
 
     vector<vector<Cost>> adjacency_matrix = construct_adjacency_matrix(input);
@@ -57,8 +57,8 @@ int main() {
     // }
     // cout << endl;
 
-    // cout << "Genetic route total cost: " << genetic_route_total_cost.distanceMeters << " meters, " << genetic_route_total_cost.durationSeconds << " seconds, " << genetic_route_total_cost.dendeInMililiters << " mililiters" << endl;
-    // cout << genetic_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << genetic_route_total_cost.distanceMeters << " " << genetic_route_total_cost.durationSeconds << " " << genetic_route_total_cost.dendeInMililiters << endl;
-    cout << genetic_route_total_cost.fitness() << endl;
+    // cout << "Genetic route total cost: " << genetic_route_total_cost.distanceMeters << " meters, " << genetic_route_total_cost.durationSeconds << " seconds, " << genetic_route_total_cost.dendeInDeciliters << " mililiters" << endl;
+    cout << genetic_route_total_cost.fitness() << " " << elapsed_milliseconds << " " << genetic_route_total_cost.distanceMeters << " " << genetic_route_total_cost.durationSeconds << " " << genetic_route_total_cost.dendeInDeciliters << endl;
+    // cout << genetic_route_total_cost.fitness() << endl;
     return 0;
 }

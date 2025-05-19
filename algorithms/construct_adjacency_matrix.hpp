@@ -11,10 +11,10 @@ vector<vector<Cost>> construct_adjacency_matrix(Input& input) {
 
     for (const auto& route : input.routes) {
         int timeToCollect = input.locations[route.destinationIndex].collectionTimeInSeconds;
-        int dendeToCollect = input.locations[route.destinationIndex].dendeInMililiters;
+        int dendeToCollect = input.locations[route.destinationIndex].dendeInDeciliters;
         adjacency_matrix[route.originIndex][route.destinationIndex].distanceMeters = route.distanceMeters;
         adjacency_matrix[route.originIndex][route.destinationIndex].durationSeconds = route.durationSeconds + timeToCollect;
-        adjacency_matrix[route.originIndex][route.destinationIndex].dendeInMililiters = dendeToCollect;
+        adjacency_matrix[route.originIndex][route.destinationIndex].dendeInDeciliters = dendeToCollect;
     }
 
     return adjacency_matrix;

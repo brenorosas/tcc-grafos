@@ -12,14 +12,14 @@ struct Location {
     string description;
     string address;
     int collectionTimeInSeconds;
-    int dendeInMililiters;
+    int dendeInDeciliters;
 };
 
 void from_json(const json& j, Location& l) {
     j.at("description").get_to(l.description);
     j.at("address").get_to(l.address);
     j.at("collectionTimeInSeconds").get_to(l.collectionTimeInSeconds);
-    j.at("dendeInMililiters").get_to(l.dendeInMililiters);
+    j.at("dendeInDeciliters").get_to(l.dendeInDeciliters);
 }
 
 void to_json(json& j, const Location& l) {
@@ -27,7 +27,7 @@ void to_json(json& j, const Location& l) {
         {"description", l.description},
         {"address", l.address},
         {"collectionTimeInSeconds", l.collectionTimeInSeconds},
-        {"dendeInMililiters", l.dendeInMililiters}
+        {"dendeInDeciliters", l.dendeInDeciliters}
     };
 }
 

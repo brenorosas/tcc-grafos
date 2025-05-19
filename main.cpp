@@ -30,7 +30,9 @@ int main() {
     }
     cout << endl;
 
-    cout << "Random route total cost: " << random_route_total_cost.distanceMeters << " meters, " << random_route_total_cost.durationSeconds << " seconds, " << random_route_total_cost.dendeInMililiters << " mililiters" << endl;
+    cout << "Random Route: " << random_route_total_cost.distanceMeters << " meters, "
+         << random_route_total_cost.durationSeconds << " seconds, "
+         << random_route_total_cost.dendeInDeciliters << " deciliters" << endl;
 
     vector<int> grasp_route = grasp(adjacency_matrix, input.limitations);
     Cost grasp_route_total_cost = calculate_total_cost(adjacency_matrix, grasp_route);
@@ -41,7 +43,9 @@ int main() {
     }
     cout << endl;
 
-    cout << "GRASP route total cost: " << grasp_route_total_cost.distanceMeters << " meters, " << grasp_route_total_cost.durationSeconds << " seconds, " << grasp_route_total_cost.dendeInMililiters << " mililiters" << endl;
+    cout << "GRASP Route: " << grasp_route_total_cost.distanceMeters << " meters, "
+         << grasp_route_total_cost.durationSeconds << " seconds, "
+         << grasp_route_total_cost.dendeInDeciliters << " deciliters" << endl;
 
     vector<int> genetic_route = genetic_algorithm(adjacency_matrix, input.limitations);
     Cost genetic_route_total_cost = calculate_total_cost(adjacency_matrix, genetic_route);
@@ -52,7 +56,9 @@ int main() {
     }
     cout << endl;
 
-    cout << "Genetic route total cost: " << genetic_route_total_cost.distanceMeters << " meters, " << genetic_route_total_cost.durationSeconds << " seconds, " << genetic_route_total_cost.dendeInMililiters << " mililiters" << endl;
+    cout << "Genetic Route: " << genetic_route_total_cost.distanceMeters << " meters, "
+         << genetic_route_total_cost.durationSeconds << " seconds, "
+         << genetic_route_total_cost.dendeInDeciliters << " deciliters" << endl;
 
      vector<int> memetic_route = genetic_algorithm(adjacency_matrix, input.limitations, true);
     Cost memetic_route_total_cost = calculate_total_cost(adjacency_matrix, memetic_route);
@@ -63,7 +69,9 @@ int main() {
     }
     cout << endl;
 
-    cout << "Memetic route total cost: " << memetic_route_total_cost.distanceMeters << " meters, " << memetic_route_total_cost.durationSeconds << " seconds, " << memetic_route_total_cost.dendeInMililiters << " mililiters" << endl;
+    cout << "Memetic Route: " << memetic_route_total_cost.distanceMeters << " meters, "
+         << memetic_route_total_cost.durationSeconds << " seconds, "
+         << memetic_route_total_cost.dendeInDeciliters << " deciliters" << endl;
 
 
 

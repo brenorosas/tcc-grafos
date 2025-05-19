@@ -24,7 +24,7 @@ vector<int> grasp(vector<vector<Cost>>& adjacency_matrix, Limitations limits, do
 
         Cost cost = calculate_total_cost(adjacency_matrix, route);
 
-        if (cost.is_inside_limits(limits) && cost.fitness() > best_cost.fitness()) {
+        if (cost.is_inside_limits(limits) && cost.fitness() < best_cost.fitness()) {
             best_cost = cost;
             best_route = route;
             best_random_route = random_route;

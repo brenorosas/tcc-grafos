@@ -26,13 +26,7 @@
 ##    condition is satisfied, FALSE otherwise.
 
 # 1:            2:                   3:     4:      5:
-epsilon           "--epsilon "       r      (0.1, 0.99)
-best_cota        ""                  i      (5, 50)
-selection_size   ""                  i      (20, 100)
-#unused         "-u "                c      (1, 2, 10, 20)
-
-[forbidden]
-## mode == "x1" & mutation == "low"
+epsilon           ""                  r      (0.1, 0.99)
 
 [global]
 digits = 4 # Maximum number of decimal places that are significant for numerical (real) parameters.

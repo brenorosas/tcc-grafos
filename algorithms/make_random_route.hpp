@@ -27,7 +27,8 @@ vector<int> make_random_route(vector<vector<Cost>>& adjacency_matrix, float epsi
         int last_node = route.back();
 
         int next_node = -1;
-        if (static_cast<float>(rand()) / RAND_MAX < epsilon) {
+        uniform_real_distribution<double> dist(0.0, 1.0);
+        if (dist(g) < epsilon) {
             // Escolha aleatória, mas respeitando limitações
             vector<int> candidates;
             for (int j = 0; j < num_nodes; j++) {
@@ -35,14 +36,15 @@ vector<int> make_random_route(vector<vector<Cost>>& adjacency_matrix, float epsi
                     Cost new_cost = current_cost;
                     new_cost += adjacency_matrix[last_node][j];
                     new_cost += adjacency_matrix[j][0];
-                    if (new_cost.dendeInMililiters <= limits.maxDendeInMililiters &&
+                    if (new_cost.dendeInDeciliters <= limits.maxDendeInDeciliters &&
                         new_cost.durationSeconds <= limits.maxCollectionTimeInSeconds) {
                         candidates.push_back(j);
                     }
                 }
             }
             if (!candidates.empty()) {
-                next_node = candidates[g() % candidates.size()];
+                uniform_int_distribution<int> idx_dist(0, candidates.size() - 1);
+                next_node = candidates[idx_dist(g)];
             }
         } else {
             // Escolhe o próximo nó com menor custo, respeitando limitações
@@ -52,7 +54,7 @@ vector<int> make_random_route(vector<vector<Cost>>& adjacency_matrix, float epsi
                     Cost new_cost = current_cost;
                     new_cost += adjacency_matrix[last_node][j];
                     new_cost += adjacency_matrix[j][0];
-                    if (new_cost.dendeInMililiters <= limits.maxDendeInMililiters &&
+                    if (new_cost.dendeInDeciliters <= limits.maxDendeInDeciliters &&
                         new_cost.durationSeconds <= limits.maxCollectionTimeInSeconds &&
                         adjacency_matrix[last_node][j] < min_cost) {
                         min_cost = adjacency_matrix[last_node][j];

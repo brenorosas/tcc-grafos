@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
     Input input;
     for (int i = 0; i < n; i++) {
         Location location;
-        cin >> location.collectionTimeInSeconds >> location.dendeInMililiters;
+        cin >> location.collectionTimeInSeconds >> location.dendeInDeciliters;
         input.locations.push_back(location);
     }
 
@@ -48,8 +48,8 @@ int main(int argc, char* argv[]) {
     }
 
     input.limitations.maxCollectionTimeInSeconds = 3600 * 8;
-    input.limitations.maxDendeInMililiters = 100 * 1000;
-    input.limitations.minDendeInMililiters = 20 * 1000;
+    input.limitations.maxDendeInDeciliters = 100 * 10;
+    input.limitations.minDendeInDeciliters = 20 * 10;
 
     vector<vector<Cost>> adjacency_matrix = construct_adjacency_matrix(input);
 

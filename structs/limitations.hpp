@@ -8,21 +8,21 @@ using json = nlohmann::json;
 using namespace std;
 
 struct Limitations {
-    int maxDendeInMililiters;
+    int maxDendeInDeciliters;
     int maxCollectionTimeInSeconds;
-    int minDendeInMililiters;
+    int minDendeInDeciliters;
 };
 
 void from_json(const json& j, Limitations& l) {
-    j.at("maxDendeInMililiters").get_to(l.maxDendeInMililiters);
+    j.at("maxDendeInDeciliters").get_to(l.maxDendeInDeciliters);
     j.at("maxCollectionTimeInSeconds").get_to(l.maxCollectionTimeInSeconds);
-    j.at("minDendeInMililiters").get_to(l.minDendeInMililiters);
+    j.at("minDendeInDeciliters").get_to(l.minDendeInDeciliters);
 }
 
 void to_json(json& j, const Limitations& l) {
     j = json{
-        {"maxDendeInMililiters", l.maxDendeInMililiters},
+        {"maxDendeInDeciliters", l.maxDendeInDeciliters},
         {"maxCollectionTimeInSeconds", l.maxCollectionTimeInSeconds},
-        {"minDendeInMililiters", l.minDendeInMililiters}
+        {"minDendeInDeciliters", l.minDendeInDeciliters}
     };
 }

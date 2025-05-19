@@ -1,14 +1,49 @@
 #!/bin/bash
+###############################################################################
+# This script is the command that is executed every run.
+# Check the examples in examples/
+#
+# This target-runner is run in the execution directory (execDir, --exec-dir).
+#
+# PARAMETERS:
+# $1 is the candidate configuration number
+# $2 is the instance ID
+# $3 is the seed
+# $4 is the instance name
+# The rest ($* after `shift 4') are the candidate parameters
+#
+# RETURN VALUE:
+# This script should print one numerical value: the cost that must be minimized.
+###############################################################################
 
-# Get the instance file from the command line arguments
-INSTANCE=$1
-SEED=$2
-shift 2
+EXE=./grasp_irace
 
-# Get the parameters from the command line arguments
-EPSILON=$1
-BEST_COTA=$2
-SELECTION_SIZE=$3
+CANDIDATE=$1
+INSTANCEID=$2
+SEED=$3
+INSTANCE=$4
+shift 4 || exit 1
+CAND_PARAMS=$*
 
-# Run the memetic algorithm with the given parameters
-./memetic_irace $EPSILON $BEST_COTA $SELECTION_SIZE < $INSTANCE 
+STDOUT=c${CANDIDATE}-${INSTANCEID}-${SEED}.stdout
+STDERR=c${CANDIDATE}-${INSTANCEID}-${SEED}.stderr
+
+# Run the algorithm with the given parameters
+$EXE $CAND_PARAMS < $INSTANCE > $STDOUT 2> $STDERR
+
+# Check if the program worked
+if [ ! -s "${STDOUT}" ]; then
+    echo "1000000"
+    exit 1
+fi
+
+# Get the cost from the output
+COST=$(cat $STDOUT)
+
+# Print the cost
+echo "$COST"
+
+# Clean files
+rm -f $STDOUT $STDERR
+
+exit 0 

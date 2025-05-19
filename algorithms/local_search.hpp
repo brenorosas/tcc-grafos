@@ -24,7 +24,7 @@ void local_search(vector<vector<Cost>>& adjacency_matrix, vector<int>& route, Li
         for (int i = 1; i < best_route_at_moment.size() - 2; i++) {
             swap(best_route_at_moment[i], best_route_at_moment[i + 1]);
             Cost current_cost = calculate_total_cost(adjacency_matrix, best_route_at_moment);
-            if (current_cost.is_inside_limits(limits) && current_cost.fitness() > best_cost_at_moment.fitness()) {
+            if (current_cost.is_inside_limits(limits) && current_cost.fitness() < best_cost_at_moment.fitness()) {
                 best_cost_at_moment = current_cost;
                 best_route_at_moment = best_route_at_moment;
                 improved_at = true;
@@ -48,7 +48,7 @@ void local_search(vector<vector<Cost>>& adjacency_matrix, vector<int>& route, Li
                     new_route.erase(new_route.begin() + i);
                     new_route.insert(new_route.begin() + i, j);
                     Cost current_cost = calculate_total_cost(adjacency_matrix, new_route);
-                    if (current_cost.is_inside_limits(limits) && current_cost.fitness() > best_cost_at_moment.fitness()) {
+                    if (current_cost.is_inside_limits(limits) && current_cost.fitness() < best_cost_at_moment.fitness()) {
                         best_cost_at_moment = current_cost;
                         best_route_at_moment = new_route;
                         improved_at = true;
@@ -72,7 +72,7 @@ void local_search(vector<vector<Cost>>& adjacency_matrix, vector<int>& route, Li
                     vector<int> new_route = route;
                     new_route.insert(new_route.begin() + i, j);
                     Cost current_cost = calculate_total_cost(adjacency_matrix, new_route);
-                    if (current_cost.is_inside_limits(limits) && current_cost.fitness() > best_cost_at_moment.fitness()) {
+                    if (current_cost.is_inside_limits(limits) && current_cost.fitness() < best_cost_at_moment.fitness()) {
                         best_cost_at_moment = current_cost;
                         best_route_at_moment = new_route;
                         improved_at = true;

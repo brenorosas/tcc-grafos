@@ -156,8 +156,8 @@ int main(int argc, char *argv[]) {
     // Output vertex parameters
     for (const auto& loc : locations) {
         int collectionTimeInSeconds = rand_int(60 * 10, 60 * 20);
-        int dendeInMililiters = rand_int(5000, 10000);
-        cout << collectionTimeInSeconds << " " << dendeInMililiters << endl;
+        int dendeInDeciliters = rand_int(50, 100);
+        cout << collectionTimeInSeconds << " " << dendeInDeciliters << endl;
     }
 
     // Output graph edges

@@ -1,12 +1,19 @@
-## This is an example of specifying a list of instances.
+## List of instances for memetic algorithm tuning
 
 # Each line is an instance relative to trainInstancesDir/testInstancesdir
-# unless set to "" (see scenario.txt.tmpl) and an optional sequence of
-# instance-specific parameters that will be passed to target-runner when
-# invoked on that instance.
+# and an optional sequence of instance-specific parameters
 
-# Empty lines and comments are ignored.
-
-100/100-1_100-2.tsp --time 1
-100/100-1_100-3.tsp --time 2
-100/100-1_100-4.tsp --time 3
+instance_106.txt
+instance_107.txt
+instance_108.txt
+instance_109.txt
+instance_110.txt
+instance_111.txt
+instance_112.txt
+instance_113.txt
+instance_114.txt
+instance_115.txt
+instance_116.txt
+instance_117.txt
+instance_118.txt
+instance_119.txt

@@ -7,56 +7,57 @@ using namespace std;
 struct Cost {
     int distanceMeters = 0;
     int durationSeconds = 0;
-    int dendeInMililiters = 0;
+    int dendeInDeciliters = 0;
 
     void operator+=(const Cost& other) {
         distanceMeters += other.distanceMeters;
         durationSeconds += other.durationSeconds;
-        dendeInMililiters += other.dendeInMililiters;
+        dendeInDeciliters += other.dendeInDeciliters;
     }
 
-    // Order by distance, then by duration, then by reverse dendeInMililiters
+    // Order by distance, then by duration, then by dendeInDeciliters
     bool operator<(const Cost& other) const {
-        return distanceMeters < other.distanceMeters ||
-               (distanceMeters == other.distanceMeters && durationSeconds < other.durationSeconds) ||
-               (distanceMeters == other.distanceMeters && durationSeconds == other.durationSeconds &&
-                dendeInMililiters > other.dendeInMililiters);
+        if (distanceMeters != other.distanceMeters)
+            return distanceMeters < other.distanceMeters;
+        if (durationSeconds != other.durationSeconds)
+            return durationSeconds < other.durationSeconds;
+        return dendeInDeciliters > other.dendeInDeciliters;
     }
 
-    // Order by duration, then by distance, then by reverse dendeInMililiters
+    // Order by duration, then by distance, then by dendeInDeciliters
     // bool operator<(const Cost& other) const {
     //     return durationSeconds < other.durationSeconds ||
     //            (durationSeconds == other.durationSeconds && distanceMeters < other.distanceMeters) ||
     //            (durationSeconds == other.durationSeconds && distanceMeters == other.distanceMeters &&
-    //             dendeInMililiters > other.dendeInMililiters);
+    //             dendeInDeciliters < other.dendeInDeciliters);
     // }
 
-    // Order by reverse dendeInMililiters, then by distance, then by duration
+    // Order by dendeInDeciliters, then by distance, then by duration
     // bool operator<(const Cost& other) const {
-    //     return dendeInMililiters < other.dendeInMililiters ||
-    //            (dendeInMililiters == other.dendeInMililiters && distanceMeters < other.distanceMeters) ||
-    //            (dendeInMililiters == other.dendeInMililiters && distanceMeters == other.distanceMeters &&
+    //     return dendeInDeciliters < other.dendeInDeciliters ||
+    //            (dendeInDeciliters == other.dendeInDeciliters && distanceMeters < other.distanceMeters) ||
+    //            (dendeInDeciliters == other.dendeInDeciliters && distanceMeters == other.distanceMeters &&
     //             durationSeconds < other.durationSeconds);
     // }
 
-
-    // Collected dendeInMililiters per distanceMeters
+    // Collected dendeInDeciliters per distanceMeters
     // bool operator<(const Cost& other) const {
     //     return distance_per_dende() < other.distance_per_dende();
     // }
 
-    double distance_per_dende() const {
-        return static_cast<double>(distanceMeters) / dendeInMililiters;
-    }
-
     double fitness() const {
-        return -0.6 * distanceMeters + -0.3 * durationSeconds + 0.1 * dendeInMililiters;
+        // α · X + β · Y - γ · Z
+        // where X = distanceMeters, Y = durationSeconds, Z = dendeInDeciliters
+        const double alpha = 0.6;  // weight for distance
+        const double beta = 0.3;   // weight for duration
+        const double gamma = 0.1;  // weight for dende
+        return alpha * distanceMeters + beta * durationSeconds - gamma * dendeInDeciliters;
     }
 
     bool is_inside_limits(Limitations limits) const {
-        return dendeInMililiters <= limits.maxDendeInMililiters &&
+        return dendeInDeciliters <= limits.maxDendeInDeciliters &&
                durationSeconds <= limits.maxCollectionTimeInSeconds &&
-               dendeInMililiters >= limits.minDendeInMililiters;
+               dendeInDeciliters >= limits.minDendeInDeciliters;
     }
 };
 
